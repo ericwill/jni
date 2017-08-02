@@ -1,0 +1,4 @@
+To compile:
+
+gcc -c -fPIC -I/usr/lib/jvm/java/include -I/usr/lib/jvm/java/include/linux HelloWorld.c -o HelloWorld.o
+gcc HelloWorld.o -shared -o libHelloWorld.so
