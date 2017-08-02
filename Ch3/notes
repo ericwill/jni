@@ -1,0 +1,23 @@
+Two standard parameters to JNI function:
+	-JNIEnv interface pointer: 
+		-points to a location that contains a pointer to a function table
+	-jobject: 
+		-if static: it's a reference to the class in which the method is defined
+		-if instance: it's a reference to the object on which the method is invoked
+Two JNI types:
+	-primitive: int, float, char
+		-straightforward mapping, int in Java is mapped to jint in JNI, float to jfloat, etc.
+	-reference: classes, instances, arrays
+		-objects are passed as opaque references: C type points that refer to internal data
+		 structures
+		-all JNI references have a type jobject (jstring for strings, etc.)
+String conversion:
+	-JNI supports conversion both to and from UTF-8 and Unicode
+	-Unicode uses 16 bit values, where UTF-8 uses an encoding scheme that is upward compatible
+	 with 7 bit ASCII strings (also acts as null terminated C strings)
+	-GetStringUTFChars is available through the JNIEnv pointer
+		-converts Unicode sequence into UTF-8 C string format
+String creation:
+	-you can create a new Java string in the JNI method by calling NewStringUTF
+
+
